@@ -5,12 +5,12 @@ class LogsController < ApplicationController
   def index
     @logs = Log.all
 
-    render json: @logs
+    render json: @logs, methods: [:total_macros]
   end
 
   # GET /logs/1
   def show
-    render json: @log
+    render json: @log, methods: [:total_macros]
   end
 
   # POST /logs
@@ -18,18 +18,18 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
 
     if @log.save
-      render json: @log, status: :created, location: @log
+      render json: @log, methods: [:total_macros], status: :created, location: @log
     else
-      render json: @log.errors, status: :unprocessable_entity
+      render json: @log.errors, status: :unprocessable_content
     end
   end
 
   # PATCH/PUT /logs/1
   def update
     if @log.update(log_params)
-      render json: @log
+      render json: @log, methods: [:total_macros]
     else
-      render json: @log.errors, status: :unprocessable_entity
+      render json: @log.errors, status: :unprocessable_content
     end
   end
 
