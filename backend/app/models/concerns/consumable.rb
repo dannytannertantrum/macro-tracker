@@ -23,9 +23,9 @@ module Consumable
   def total_macros
     return unless food && grams_consumed
 
-    total_carbs = food.carbs_per_gram * grams_consumed
-    total_fat = food.fat_per_gram * grams_consumed
-    total_protein = food.protein_per_gram * grams_consumed
+    total_carbs = food.carbs_per_gram * (grams_consumed / food.single_serving_grams)
+    total_fat = food.fat_per_gram * (grams_consumed / food.single_serving_grams)
+    total_protein = food.protein_per_gram * (grams_consumed / food.single_serving_grams)
 
     {
       carbs: total_carbs.round(2),
