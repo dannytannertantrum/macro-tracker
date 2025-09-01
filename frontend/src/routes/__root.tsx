@@ -8,7 +8,9 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <Header />
-      <Outlet />
+      <div className="flex flex-col min-h-screen max-w-7xl mx-auto">
+        <Outlet />
+      </div>
       <TanstackDevtools
         config={{
           position: 'bottom-left',
