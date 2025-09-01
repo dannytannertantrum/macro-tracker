@@ -2,12 +2,13 @@ import { API_BASE_PATH } from '@/api/basePath';
 import { convertKeys, convertKeysToSnake } from '@/helpers/stringConverters';
 
 export interface Food {
-  name: string;
+  caloriesPerServing: number;
   carbsPerGram: number;
   fatPerGram: number;
+  name: string;
   proteinPerGram: number;
-  singleServingGrams: number;
   servingUnitName?: string | null;
+  singleServingGrams: number;
   createdAt: string;
   updatedAt: string;
 }

@@ -10,6 +10,7 @@ const defaultFood = {
   fatPerGram: '0',
   proteinPerGram: '0',
   singleServingGrams: '0',
+  caloriesPerServing: '0',
   servingUnitName: 'serving',
 };
 
@@ -44,6 +45,7 @@ export default function FoodForm({
         carbsPerGram: Number(value.carbsPerGram),
         fatPerGram: Number(value.fatPerGram),
         proteinPerGram: Number(value.proteinPerGram),
+        caloriesPerServing: Number(value.caloriesPerServing),
         singleServingGrams: Number(value.singleServingGrams),
       };
 
@@ -59,7 +61,7 @@ export default function FoodForm({
         handleSubmit();
       }}
     >
-      <Grid container spacing={2} mb={2}>
+      <Grid container spacing={1} mb={2}>
         <Field
           name="name"
           validators={{
@@ -68,6 +70,7 @@ export default function FoodForm({
         >
           {(field) => (
             <TextField
+              sx={{ maxWidth: 150 }}
               color={field.state.meta.isValid ? 'primary' : 'error'}
               error={!field.state.meta.isValid}
               helperText={
@@ -82,19 +85,20 @@ export default function FoodForm({
           )}
         </Field>
         <Field
-          name="carbsPerGram"
+          name="fatPerGram"
           validators={{
             onChange: ({ value }) => validateStringsToNumbers(value),
           }}
         >
           {(field) => (
             <TextField
+              sx={{ maxWidth: 150 }}
               color={field.state.meta.isValid ? 'primary' : 'error'}
               error={!field.state.meta.isValid}
               helperText={
                 !field.state.meta.isValid && field.state.meta.errors.join(', ')
               }
-              label="Carbs per gram"
+              label="Fat per gram"
               value={String(field.state.value)}
               variant="filled"
               onBlur={field.handleBlur}
@@ -103,19 +107,20 @@ export default function FoodForm({
           )}
         </Field>
         <Field
-          name="fatPerGram"
+          name="carbsPerGram"
           validators={{
             onChange: ({ value }) => validateStringsToNumbers(value),
           }}
         >
           {(field) => (
             <TextField
+              sx={{ maxWidth: 150 }}
               color={field.state.meta.isValid ? 'primary' : 'error'}
               error={!field.state.meta.isValid}
               helperText={
                 !field.state.meta.isValid && field.state.meta.errors.join(', ')
               }
-              label="Fat per gram"
+              label="Carbs per gram"
               value={String(field.state.value)}
               variant="filled"
               onBlur={field.handleBlur}
@@ -131,6 +136,7 @@ export default function FoodForm({
         >
           {(field) => (
             <TextField
+              sx={{ maxWidth: 150 }}
               color={field.state.meta.isValid ? 'primary' : 'error'}
               error={!field.state.meta.isValid}
               helperText={
@@ -152,6 +158,7 @@ export default function FoodForm({
         >
           {(field) => (
             <TextField
+              sx={{ maxWidth: 150 }}
               color={field.state.meta.isValid ? 'primary' : 'error'}
               error={!field.state.meta.isValid}
               helperText={
@@ -165,9 +172,32 @@ export default function FoodForm({
             />
           )}
         </Field>
+        <Field
+          name="caloriesPerServing"
+          validators={{
+            onChange: ({ value }) => validateStringsToNumbers(value),
+          }}
+        >
+          {(field) => (
+            <TextField
+              sx={{ maxWidth: 150 }}
+              color={field.state.meta.isValid ? 'primary' : 'error'}
+              error={!field.state.meta.isValid}
+              helperText={
+                !field.state.meta.isValid && field.state.meta.errors.join(', ')
+              }
+              label="Calories per serving"
+              value={String(field.state.value)}
+              variant="filled"
+              onBlur={field.handleBlur}
+              onChange={(e) => field.handleChange(e.target.value)}
+            />
+          )}
+        </Field>
         <Field name="servingUnitName">
           {(field) => (
             <TextField
+              sx={{ maxWidth: 150 }}
               color={field.state.meta.isValid ? 'primary' : 'error'}
               error={!field.state.meta.isValid}
               helperText={
