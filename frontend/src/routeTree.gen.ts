@@ -10,9 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as MealsIndexRouteImport } from './routes/meals.index'
-import { Route as LogsIndexRouteImport } from './routes/logs.index'
-import { Route as FoodsIndexRouteImport } from './routes/foods.index'
+import { Route as MealsIndexRouteImport } from './routes/meals/index'
+import { Route as LogsIndexRouteImport } from './routes/logs/index'
+import { Route as FoodsIndexRouteImport } from './routes/foods/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
