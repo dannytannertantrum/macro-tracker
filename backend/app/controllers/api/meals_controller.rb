@@ -1,4 +1,4 @@
-class MealsController < ApplicationController
+class Api::MealsController < ApplicationController
   before_action :set_meal, only: %i[ show update destroy ]
 
   # GET /meals
@@ -18,7 +18,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
 
     if @meal.save
-      render json: @meal, methods: [:total_macros], status: :created, location: @meal
+      render json: @meal, methods: [:total_macros], status: :created, location: api_meal_url(@meal)
     else
       render json: @meal.errors, status: :unprocessable_content
     end

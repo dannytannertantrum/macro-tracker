@@ -1,18 +1,18 @@
 require "test_helper"
 
-class MealsControllerTest < ActionDispatch::IntegrationTest
+class Api::MealsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @meal = meals(:one)
   end
 
   test "should get index" do
-    get meals_url, as: :json
+    get api_meals_url, as: :json
     assert_response :success
   end
 
   test "should create meal" do
     assert_difference("Meal.count") do
-      post meals_url, params: { meal: { name: @meal.name } }, as: :json
+      post api_meals_url, params: { meal: { name: @meal.name } }, as: :json
     end
 
     assert_response :created
@@ -26,7 +26,7 @@ class MealsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show meal" do
-    get meal_url(@meal), as: :json
+    get api_meal_url(@meal), as: :json
 
     assert_response :success
 
@@ -39,7 +39,7 @@ class MealsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update meal" do
-    patch meal_url(@meal), params: { meal: { name: @meal.name } }, as: :json
+    patch api_meal_url(@meal), params: { meal: { name: @meal.name } }, as: :json
 
     assert_response :success
 
@@ -53,7 +53,7 @@ class MealsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy meal" do
     assert_difference("Meal.count", -1) do
-      delete meal_url(@meal), as: :json
+      delete api_meal_url(@meal), as: :json
     end
 
     assert_response :no_content

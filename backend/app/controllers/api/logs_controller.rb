@@ -1,4 +1,4 @@
-class LogsController < ApplicationController
+class Api::LogsController < ApplicationController
   before_action :set_log, only: %i[ show update destroy ]
 
   # GET /logs
@@ -18,7 +18,7 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
 
     if @log.save
-      render json: @log, methods: [:total_macros], status: :created, location: @log
+      render json: @log, methods: [:total_macros], status: :created, location: api_log_url(@log)
     else
       render json: @log.errors, status: :unprocessable_content
     end

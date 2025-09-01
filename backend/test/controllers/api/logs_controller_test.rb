@@ -1,18 +1,18 @@
 require "test_helper"
 
-class LogsControllerTest < ActionDispatch::IntegrationTest
+class Api::LogsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @log = logs(:one)
   end
 
   test "should get index" do
-    get logs_url, as: :json
+    get api_logs_url, as: :json
     assert_response :success
   end
 
   test "should create log" do
     assert_difference("Log.count") do
-      post logs_url, params: {
+      post api_logs_url, params: {
         log: {
           food_id: @log.food_id,
           grams_consumed: @log.grams_consumed,
@@ -40,7 +40,7 @@ class LogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show log" do
-    get log_url(@log), as: :json
+    get api_log_url(@log), as: :json
     assert_response :success
 
     json = JSON.parse(@response.body)
@@ -52,7 +52,7 @@ class LogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update log" do
-    patch log_url(@log), params: {
+    patch api_log_url(@log), params: {
       log: {
         food_id: @log.food_id,
         grams_consumed: @log.grams_consumed,
@@ -72,7 +72,7 @@ class LogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy log" do
     assert_difference("Log.count", -1) do
-      delete log_url(@log), as: :json
+      delete api_log_url(@log), as: :json
     end
 
     assert_response :no_content
