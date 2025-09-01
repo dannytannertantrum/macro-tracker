@@ -10,7 +10,8 @@ class MealTest < ActiveSupport::TestCase
       carbs_per_gram: 10,
       fat_per_gram: 2,
       protein_per_gram: 10,
-      single_serving_grams: 98
+      single_serving_grams: 98,
+      calories_per_serving: 140.0
     )
 
     meal = Meal.create!(name: "My Meal")
@@ -32,6 +33,9 @@ class MealTest < ActiveSupport::TestCase
       protein: 15
     }
 
+    expected_calories = 210
+
     assert_equal expected_macros, meal.total_macros
+    assert_equal expected_calories, meal.total_calories
   end
 end

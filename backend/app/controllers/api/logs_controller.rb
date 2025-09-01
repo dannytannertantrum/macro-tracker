@@ -5,12 +5,12 @@ class Api::LogsController < ApplicationController
   def index
     @logs = Log.all
 
-    render json: @logs, methods: [:total_macros]
+    render json: @logs, methods: [:total_macros, :total_calories]
   end
 
   # GET /logs/1
   def show
-    render json: @log, methods: [:total_macros]
+    render json: @log, methods: [:total_macros, :total_calories]
   end
 
   # POST /logs
@@ -18,7 +18,7 @@ class Api::LogsController < ApplicationController
     @log = Log.new(log_params)
 
     if @log.save
-      render json: @log, methods: [:total_macros], status: :created, location: api_log_url(@log)
+      render json: @log, methods: [:total_macros, :total_calories], status: :created, location: api_log_url(@log)
     else
       render json: @log.errors, status: :unprocessable_content
     end
@@ -27,7 +27,7 @@ class Api::LogsController < ApplicationController
   # PATCH/PUT /logs/1
   def update
     if @log.update(log_params)
-      render json: @log, methods: [:total_macros]
+      render json: @log, methods: [:total_macros, :total_calories]
     else
       render json: @log.errors, status: :unprocessable_content
     end

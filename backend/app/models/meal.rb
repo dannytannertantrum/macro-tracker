@@ -23,4 +23,16 @@ class Meal < ApplicationRecord
 
     total_macros_hash.transform_values { |value| value.round(2) }
   end
+
+  def total_calories
+    total_calories = 0
+
+    meal_items.each do |meal_item|
+      item_calories = meal_item.total_calories || 0
+
+      total_calories += item_calories
+    end
+
+    total_calories.round(2)
+  end
 end

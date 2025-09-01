@@ -19,7 +19,8 @@ class Api::FoodsControllerTest < ActionDispatch::IntegrationTest
           name: @food.name,
           protein_per_gram: @food.protein_per_gram,
           serving_unit_name: @food.serving_unit_name,
-          single_serving_grams: @food.single_serving_grams
+          single_serving_grams: @food.single_serving_grams,
+          calories_per_serving: @food.calories_per_serving
         }
       }, as: :json
     end
@@ -40,7 +41,8 @@ class Api::FoodsControllerTest < ActionDispatch::IntegrationTest
         name: @food.name,
         protein_per_gram: @food.protein_per_gram,
         serving_unit_name: @food.serving_unit_name,
-        single_serving_grams: @food.single_serving_grams
+        single_serving_grams: @food.single_serving_grams,
+        calories_per_serving: @food.calories_per_serving
       }
     }, as: :json
     assert_response :success

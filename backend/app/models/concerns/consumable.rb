@@ -34,6 +34,12 @@ module Consumable
     }
   end
 
+  def total_calories
+    return unless food && grams_consumed
+
+    ((food.calories_per_serving || 0) * (grams_consumed / food.single_serving_grams)).to_f.round(2)
+  end
+
   private
 
   def one_field_must_be_present

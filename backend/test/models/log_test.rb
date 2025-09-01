@@ -7,7 +7,8 @@ class LogTest < ActiveSupport::TestCase
       carbs_per_gram: 10,
       fat_per_gram: 2,
       protein_per_gram: 10,
-      single_serving_grams: 98
+      single_serving_grams: 98,
+      calories_per_serving: 140
     )
 
     log = Log.create!(
@@ -22,7 +23,10 @@ class LogTest < ActiveSupport::TestCase
       protein: 20
     }
 
+    expected_calories = 280
+
     assert_equal expected_macros, log.total_macros
+    assert_equal expected_calories, log.total_calories
   end
 
   test "total_macros are accurately calculated for a Log entry using number_of_servings" do
@@ -31,7 +35,8 @@ class LogTest < ActiveSupport::TestCase
       carbs_per_gram: 10,
       fat_per_gram: 2,
       protein_per_gram: 10,
-      single_serving_grams: 98
+      single_serving_grams: 98,
+      calories_per_serving: 140
     )
 
     log = Log.create!(
@@ -46,6 +51,9 @@ class LogTest < ActiveSupport::TestCase
       protein: 20
     }
 
+    expected_calories = 280
+
     assert_equal expected_macros, log.total_macros
+    assert_equal expected_calories, log.total_calories
   end
 end

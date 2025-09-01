@@ -14,6 +14,11 @@ rails generate scaffold MealItem meal:references food:references grams_consumed:
 ```
 
 - Oops! Forgot `meal_type` in the log. Updated the model, controllers and validation before running the migration.
+- Double oops! Much later, realized I didn't add calories. As a refresher for myself, here's a migration command:
+
+```bash
+rails generate migration AddCaloriesPerServingToFoods calories_per_serving:decimal
+```
 
 ### Run the Migration and Create the Test DB
 

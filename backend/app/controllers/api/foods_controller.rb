@@ -46,6 +46,6 @@ class Api::FoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_params
-      params.expect(food: [ :name, :carbs_per_gram, :fat_per_gram, :protein_per_gram, :single_serving_grams, :serving_unit_name ])
+      params.expect(food: [ :name, :carbs_per_gram, :fat_per_gram, :protein_per_gram, :single_serving_grams, :serving_unit_name, :calories_per_serving ])
     end
 end

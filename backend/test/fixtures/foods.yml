@@ -7,6 +7,7 @@ one:
   protein_per_gram: 9.99
   single_serving_grams: 9.99
   serving_unit_name: MyString
+  calories_per_serving: 9.99
 
 two:
   name: MyString
@@ -15,3 +16,4 @@ two:
   protein_per_gram: 9.99
   single_serving_grams: 9.99
   serving_unit_name: MyString
+  calories_per_serving: 9.99
