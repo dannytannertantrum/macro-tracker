@@ -1,7 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
-import { FOODS_QUERY_KEY, getFoods } from '@/api/foodQueries';
+import { FOODS_QUERY_KEY, createFood, getFoods } from '@/api/foodQueries';
+import FoodForm from '@/forms/foodForm';
+import { queryClient } from '@/main';
 
 export const Route = createFileRoute('/foods/')({
   component: RouteComponent,
@@ -16,6 +18,14 @@ function RouteComponent() {
     queryKey: FOODS_QUERY_KEY,
     queryFn: getFoods,
     initialData: [],
+  });
+
+  const createFoodMutation = useMutation({
+    mutationFn: createFood,
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['foods'] });
+    },
   });
 
   if (isFetching) {
@@ -34,6 +44,7 @@ function RouteComponent() {
           <li key={food.name}>{food.name}</li>
         ))}
       </ul>
+      <FoodForm createFoodMutation={createFoodMutation} />
     </div>
   );
 }
