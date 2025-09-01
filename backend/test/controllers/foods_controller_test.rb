@@ -12,7 +12,16 @@ class FoodsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create food" do
     assert_difference("Food.count") do
-      post foods_url, params: { food: { carbs_per_gram: @food.carbs_per_gram, fat_per_gram: @food.fat_per_gram, name: @food.name, protein_per_gram: @food.protein_per_gram, serving_unit_name: @food.serving_unit_name, single_serving_grams: @food.single_serving_grams } }, as: :json
+      post foods_url, params: {
+        food: {
+          carbs_per_gram: @food.carbs_per_gram,
+          fat_per_gram: @food.fat_per_gram,
+          name: @food.name,
+          protein_per_gram: @food.protein_per_gram,
+          serving_unit_name: @food.serving_unit_name,
+          single_serving_grams: @food.single_serving_grams
+        }
+      }, as: :json
     end
 
     assert_response :created
@@ -24,7 +33,16 @@ class FoodsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update food" do
-    patch food_url(@food), params: { food: { carbs_per_gram: @food.carbs_per_gram, fat_per_gram: @food.fat_per_gram, name: @food.name, protein_per_gram: @food.protein_per_gram, serving_unit_name: @food.serving_unit_name, single_serving_grams: @food.single_serving_grams } }, as: :json
+    patch food_url(@food), params: {
+      food: {
+        carbs_per_gram: @food.carbs_per_gram,
+        fat_per_gram: @food.fat_per_gram,
+        name: @food.name,
+        protein_per_gram: @food.protein_per_gram,
+        serving_unit_name: @food.serving_unit_name,
+        single_serving_grams: @food.single_serving_grams
+      }
+    }, as: :json
     assert_response :success
   end
 

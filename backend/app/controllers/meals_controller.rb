@@ -5,12 +5,12 @@ class MealsController < ApplicationController
   def index
     @meals = Meal.all
 
-    render json: @meals
+    render json: @meals, methods: [:total_macros]
   end
 
   # GET /meals/1
   def show
-    render json: @meal
+    render json: @meal, methods: [:total_macros]
   end
 
   # POST /meals
@@ -18,7 +18,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
 
     if @meal.save
-      render json: @meal, status: :created, location: @meal
+      render json: @meal, methods: [:total_macros], status: :created, location: @meal
     else
       render json: @meal.errors, status: :unprocessable_content
     end
@@ -27,7 +27,7 @@ class MealsController < ApplicationController
   # PATCH/PUT /meals/1
   def update
     if @meal.update(meal_params)
-      render json: @meal
+      render json: @meal, methods: [:total_macros]
     else
       render json: @meal.errors, status: :unprocessable_content
     end
